@@ -12,11 +12,11 @@
 // Global information configuration
 #let s = (s.methods.info)(
   self: s,
-  title: [United States Training Center],
-  subtitle: [Man: What Can I Say? Manba Out!],
-  author: [private],
+  title: [关于课题研究内容的了解学习],
+  subtitle: [组会日程内容汇报],
+  author: [董若扬],
   date: datetime.today(),
-  institution: [School of Computer Science and Technology, USTC],
+  institution: [计算机科学与技术学院, USTC],
   // logo: image("../assets/vi/ustc-cs.svg", width: 20%)
   // logo: image("../assets/vi/ustc_logo_side.svg", width: 20%)
   logo: image("../assets/vi/绘图1.svg", width: 50%)
