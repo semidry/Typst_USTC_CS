@@ -3,6 +3,11 @@
 
 #import "@preview/touying:0.4.2": *
 
+#set text(
+  lang: "zh",
+  font: "PingFang SC",
+)
+
 #let ustcblue=rgb("#034ea1")
 
 /**
