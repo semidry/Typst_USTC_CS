@@ -196,14 +196,14 @@
   // - self: The self parameter of the outline-slide function.
   // Returns:
   // - The generated outline slide.
-  self.buaa-title = context if text.lang == "zh" [目录] else [Outline]
+  self.buaa-title = context if text.lang == "zh" [目录] else [目录]
   let content = {
     set align(horizon)
     set text(weight: "bold")
     hide([-])
     buaa-outline(self: self)
   }
-  (self.methods.touying-slide)(self: self, repeat: none, section: (title: context if text.lang == "zh" [目录] else [Outline]), content)
+  (self.methods.touying-slide)(self: self, repeat: none, section: (title: context if text.lang == "zh" [目录] else [目录]), content)
 }
 
 /**
@@ -215,7 +215,7 @@
  * @returns The new section slide.
  */
 #let new-section-slide(self: none, short-title: auto, title) = {
-  self.buaa-title = context if text.lang == "zh" [目录] else [Outline]
+  self.buaa-title = context if text.lang == "zh" [目录] else [目录]
   let content = {
     set align(horizon)
     set text(weight: "bold")

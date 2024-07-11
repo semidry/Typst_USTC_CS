@@ -55,7 +55,7 @@
  */
 #outline-slide()
 
-= OpenHarmony系统
+= OpenHarmony框架
 
 == OpenHarmony框架
 
@@ -64,9 +64,39 @@
 )
 我认为学习的重点是_系统服务层_的(分布式)_数据管理_与_系统基本能力子系统集_中的_AI子系统_。其中研究的重点应该是在分布式数据管理上做改进使其能充分利用AI子系统的能力。
 
-== OpenHarmony分布式数据管理
+== OpenHarmony数据管理
 
-分布式数据管理
+#slide[
+- 跨应用数据管理（DataShare）：提供了数据提供者provider、数据消费者consumer以及同设备跨应用数据交互的增、删、改、查以及订阅通知等能力。
+- 统一数据管理框架（UDMF）：提供了数据跨应用、跨设备交互标准，实现高效的数据跨应用、跨设备共享。
+- 数据管理服务（DatamgrService）：提供其它部件的同步及跨应用共享能力.
+][
+  #figure(
+  image("../img/dataManagement.jpg",width: 100%),
+  caption: [OpenHarmony数据管理架构图]
+)
+]
+
+== 跨应用数据共享
+
+=== _标准化数据定义_
+
+当出现多应用数据共享时，每个应用都有自己的数据定义和数据格式，应用间的的数据交互需做大量的数据格式适配工作。为了降低应用/业务数据交互成本，提出标准化数据定义作为OpenHarmony统一的数据语言，构建OpenHarmony数据跨应用交互标准。
+
+=== _一对多跨应用数据共享_
+
+基于跨应用一对多数据共享的场景，可通过DataShare实现。数据提供方无需进行繁琐的封装，可直接使用DataShare向其他应用共享数据；对数据访问方来说，因DataShare的访问方式不会因数据提供的方式而不同，只需要学习和使用一套接口即可，大大减少了学习时间和开发难度。
+
+数据提供方无需进行繁琐的封装，可直接使用DataShare向其他应用共享数据；对数据访问方来说，因DataShare的访问方式不会因数据提供的方式而不同，只需要学习和使用一套接口即可，大大减少了学习时间和开发难度。
+
+DataShare实现跨应用数据共享有两种方式：
+- 使用DataShareExtensionAbility实现数据共享
+- 通过数据管理服务实现数据共享静默访问
+
+=== _多对多跨应用数据共享_
+
+通过标准化数据通路实现数据共享。应用可以根据UDMF标准化数据通路提供的数据接入与读取接口，将符合标准化数据定义的数据写入UDMF不同的数据共享通路，并提供多应用进行读取。写入UDMF中的数据依据应用定义的权限、数据通路定义的权限以及整个UDMF框架定义的权限管理逻辑进行管理。
+
 
 = 终端大模型
 
@@ -182,11 +212,11 @@ PagedAttention的抽象：
   
     taskgroup(title: [*了解OpenHarmony*], {
       task("查阅文档，了解框架", (0, 2), style: (stroke: 2pt + gray))
-      task("检索文档，关注其数据管理功能", (0, 0), style: (stroke: 2pt + gray))
+      task("检索文档，关注其数据管理功能", (5, 7), style: (stroke: 2pt + gray))
     })
 
     taskgroup(title: [*了解终端大模型*], {
-      task("查阅PowerInfer-2相关资料", (0, 0), style: (stroke: 2pt + gray))
+      task("查阅PowerInfer-2相关资料", (0, 2), (4,5), style: (stroke: 2pt + gray))
     })
 
     taskgroup(title: [*学习vLLm论文*], {
