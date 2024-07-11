@@ -219,7 +219,7 @@ PagedAttention的抽象：
       task("查阅PowerInfer-2相关资料", (0, 2), (4,5), style: (stroke: 2pt + gray))
     })
 
-    taskgroup(title: [*学习vLLm论文*], {
+    taskgroup(title: [*阅读vLLm论文*], {
       task("阅读并做摘录", (2, 5), style: (stroke: 2pt + gray))
     })
 
