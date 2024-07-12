@@ -27,7 +27,7 @@
   institution: [计算机科学与技术学院, USTC],
   // logo: image("../assets/vi/ustc-cs.svg", width: 20%)
   // logo: image("../assets/vi/ustc_logo_side.svg", width: 20%)
-  logo: image("../assets/vi/绘图1.svg", width: 50%)
+  logo: image("../assets/vi/USTC.svg", width: 50%)
 )
 
 // Extract methods
