@@ -3,11 +3,6 @@
 
 #import "@preview/touying:0.4.2": *
 
-#set text(
-  lang: "zh",
-  font: "PingFang SC",
-)
-
 #let ustcblue=rgb("#034ea1")
 
 /**
@@ -470,7 +465,7 @@
     )
   }
 
-  self.methods.init = (self: none, lang: "en", font: ("Linux Libertine",), body) => {
+  self.methods.init = (self: none, lang: "zh", font: ("Linux Libertine",), body) => {//
     set text(size: 19pt, font: font)
     set heading(outlined: false)
     set list(marker: self.buaa-knob-marker)
