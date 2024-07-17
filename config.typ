@@ -9,9 +9,9 @@
 
 #let s = (s.methods.info)(
   self: s,
-  title: [Typst template for School of Computer Science and Technology, USTC],
-  subtitle: [Continuously Improving...],
-  author: [DRY],
+  title: [日程活动记录汇报],
+  subtitle: [],
+  author: [董若扬],
   date: datetime.today(),
   institution: [School of Computer Science and Technology, USTC],
   logo: image("./assets/img/USTC.svg", width: 50%),

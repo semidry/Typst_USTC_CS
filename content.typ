@@ -2,368 +2,57 @@
 
 #outline-slide()
 
-= 第一章：样式
+= 日程记录
 
-== 想分列显示？
+== 本周日程安排
 
-// #slide[
-//   第一列
-// ][
-//   第二列
-// ]
-
-#slide(composer: (1fr,1fr, auto))[
-  #Colorful[GOOGLE].
-  
-][
-  *Second column.第二列*
-][
-  #figure(
-    image("./assets/img/brand-rust.svg", width: 30%),
-    caption: [Rust logo],
-  )
-]
-
-== 表格
-//表格内容设置在main.typ中
-
-
-#let a = table.cell(
-  fill: green.lighten(60%),
-)[A]
-#let b = table.cell(
-  fill: aqua.lighten(60%),
-)[B]
-
-#table(
-  columns: 4,
-  [], [Exam 1], [Exam 2], [Exam 3],
-
-  [John], [], a, [],
-  [Mary], [], a, a,
-  [Robert], b, a, b,
-)
-
-= 第二章：小组件
-
-== 时间轴，很简单
-
-//timeliney: https://typst.app/universe/package/timeliney
 #timeliney.timeline(
   show-grid: true,
   {
     import timeliney: *
       
-    headerline(group(([*2023*], 4)), group(([*2024*], 4)))
+    headerline(group(([*July*], 7)))
     headerline(
-      group(..range(4).map(n => strong("Q" + str(n + 1)))),
-      group(..range(4).map(n => strong("Q" + str(n + 1)))),
+      group(..range(7).map(n => strong(str(n + 12)))),
+      // group(..range(4).map(n => strong("Q" + str(n + 1)))),
     )
   
-    taskgroup(title: [*Research*], {
-      task("Research the market", (0, 2), style: (stroke: 2pt + gray))
-      task("Conduct user surveys", (1, 3), style: (stroke: 2pt + gray))
+    taskgroup(title: [*试用DevEco Studio*], {
+      task("了解OH Next应用程序的开发架构", (4, 7), style: (stroke: 2pt + gray))
+      // task("检索文档，关注其数据管理功能", (5, 7), style: (stroke: 2pt + gray))
     })
 
-    taskgroup(title: [*Development*], {
-      task("Create mock-ups", (2, 3), style: (stroke: 2pt + gray))
-      task("Develop application", (3, 5), style: (stroke: 2pt + gray))
-      task("QA", (3.5, 6), style: (stroke: 2pt + gray))
+    taskgroup(title: [*学习Typst*], {
+      task("完善模板并添加小组件与说明文档", (0, 6), (4,5), style: (stroke: 2pt + gray))
     })
 
-    taskgroup(title: [*Marketing*], {
-      task("Press demos", (3.5, 7), style: (stroke: 2pt + gray))
-      task("Social media advertising", (6, 7.5), style: (stroke: 2pt + gray))
+    taskgroup(title: [*个人能力提升*], {
+      task("学习Sringboot开发", (1, 3), style: (stroke: 2pt + gray))
+      task("Leetcode刷题", (6, 7), style: (stroke: 2pt + gray))
     })
-
-    milestone(
-      at: 3.75,
-      style: (stroke: (dash: "dashed")),
-      align(center, [
-        *Conference demo*\
-        Dec 2023
-      ])
-    )
-
-    milestone(
-      at: 6.5,
-      style: (stroke: (dash: "dashed")),
-      align(center, [
-        *App store launch*\
-        Aug 2024
-      ])
-    )
   }
 )
 
-== 代码块，很优雅
+= 尝试DevEco Studio应用开发
 
 #slide[
-```typc
-pub fn main() {
-    println!("Hello, world!");
-}
-```
-][
-  //codly: https://typst.app/universe/package/codly
-```rust
-pub fn main() {
-    println!("Hello, world!");
-}
-```
-]
-
-== 用节点和箭头绘制图表
-
-#slide[
-  #set text(size: .5em,)
-
-```typc
-#diagram(cell-size: 15mm, $
-  G edge(f, ->) edge("d", pi, ->>) & im(f) \
-  G slash ker(f) edge("ur", tilde(f), "hook-->")
-$)
-```
-][
   #align(center,{
-  diagram(cell-size: 15mm, $
-    G edge(f, ->) edge("d", pi, ->>) & im(f) \
-    G slash ker(f) edge("ur", tilde(f), "hook-->")
-  $)
+    figure(
+      image("img/deveco.jpg",width: 110%),
+      caption:[
+        DevEco Studio界面及OH Next模拟器
+      ]
+
+    )
   })
 ]
 
-#slide[
-#set text(size: .5em,)
+我发现其声明式的语言风格和Google最新推荐的标准Jetpack Compose十分类似，是视图和控制逻辑结合的开发模式，其页面重组，数据传递和状态迁移相较传统的view模式有显著的提升，特别是其页面重组可以由状态树来最小化重组规模从而减小开销。刚好我的Android应用Wordle也是采用声明式的Jetpack Compose开发，所以我发现其开发模式很容易上手。阅读示例项目基本不需要查阅文档。
 
-```typc
-#import fletcher.shapes: diamond
-#set text(font: "Comic Neue", weight: 600)
+不过DevEco Studio与Android Studio不同，使用模拟器竟然需要申请资格，资格审核用了几天时间。
 
-#diagram(
-  node-stroke: 1pt,
-  edge-stroke: 1pt,
-  node((0,0), [Start], corner-radius: 2pt, extrude: (0, 3)),
-  edge("-|>"),
-  node((0,1), align(center)[
-    Hey, wait,\ this flowchart\ is a trap!
-  ], shape: diamond),
-  edge("d,r,u,l", "-|>", [Yes], label-pos: 0.1)
-)
-```
-][
-  #align(center,{
-import fletcher.shapes: diamond
-set text(font: "Comic Neue", weight: 600)
+虽然课题研究内容不在应用层面上，但我希望能从应用层了解应用是如何与操作系统打交道的，毕竟Open Harmony系统设计吸取了过去操作系统的经验和教训也采用了新的设计理念，例如微内核架构，分布式架构等，其应用使用的接口和我过去开发的Android应用我所不了解的区别，了解了应用层如何开发设计才能更好的在操作系统层面做出有利于应用使用的改进。
 
-diagram(
-  node-stroke: 1pt,
-  edge-stroke: 1pt,
-  node((0,0), [Start], corner-radius: 2pt, extrude: (0, 3)),
-  edge("-|>"),
-  node((0,1), align(center)[
-    Hey, wait,\ this flowchart\ is a trap!
-  ], shape: diamond),
-  edge("d,r,u,l", "-|>", [Yes], label-pos: 0.1)
-)
-  })
-]
+= 继续完善Typst模板
 
-#slide[
-  #set text(size: .5em,)
-
-```typc
-#set text(10pt)
-#diagram(
-  node-stroke: .1em,
-  node-fill: gradient.radial(blue.lighten(80%), blue, center: (30%, 20%), radius: 80%),
-  spacing: 4em,
-  edge((-1,0), "r", "-|>", `open(path)`, label-pos: 0, label-side: center),
-  node((0,0), `reading`, radius: 2em),
-  edge(`read()`, "-|>"),
-  node((1,0), `eof`, radius: 2em),
-  edge(`close()`, "-|>"),
-  node((2,0), `closed`, radius: 2em, extrude: (-2.5, 0)),
-  edge((0,0), (0,0), `read()`, "--|>", bend: 130deg),
-  edge((0,0), (2,0), `close()`, "-|>", bend: -40deg),
-)
-```
-][
-  
-  #align(center,{
-set text(10pt)
-diagram(
-  node-stroke: .1em,
-  node-fill: gradient.radial(blue.lighten(80%), blue, center: (30%, 20%), radius: 80%),
-  spacing: 4em,
-  edge((-1,0), "r", "-|>", `open(path)`, label-pos: 0, label-side: center),
-  node((0,0), `reading`, radius: 2em),
-  edge(`read()`, "-|>"),
-  node((1,0), `eof`, radius: 2em),
-  edge(`close()`, "-|>"),
-  node((2,0), `closed`, radius: 2em, extrude: (-2.5, 0)),
-  edge((0,0), (0,0), `read()`, "--|>", bend: 130deg),
-  edge((0,0), (2,0), `close()`, "-|>", bend: -40deg),
-)
-  })
-]
-
-#slide[
-  #set text(size: .5em)
-
-```typc
-#diagram(cell-size: 15mm, $
-  G edge(f, ->) edge("d", pi, ->>) & im(f) \
-  G slash ker(f) edge("ur", tilde(f), "hook-->")
-$)
-```
-][
-  #align(center,{
-  diagram(cell-size: 15mm, $
-    G edge(f, ->) edge("d", pi, ->>) & im(f) \
-    G slash ker(f) edge("ur", tilde(f), "hook-->")
-  $)
-  })
-]
-
-== 展示框，很有趣
-
-#slide[
-  #set text(size: .5em)
-
-```typc
-#showybox(
-  [Hello world!]
-)
-```
-```typc
-showybox(
-  frame: (
-    dash: "dashed",
-    border-color: red.darken(40%)
-  ),
-  body-style: (
-    align: center
-  ),
-  sep: (
-    dash: "dashed"
-  ),
-  shadow: (
-	  offset: (x: 2pt, y: 3pt),
-    color: yellow.lighten(70%)
-  ),
-  [This is an important message!],
-  [Be careful outside. There are dangerous bananas!]
-)
-```
-
-][
-  #align(center,{
-
-  showybox(
-  [Hello world!]
-  )
-
-showybox(
-  frame: (
-    dash: "dashed",
-    border-color: red.darken(40%)
-  ),
-  body-style: (
-    align: center
-  ),
-  sep: (
-    dash: "dashed"
-  ),
-  shadow: (
-	  offset: (x: 2pt, y: 3pt),
-    color: yellow.lighten(70%)
-  ),
-  [This is an important message!],
-  [Be careful outside. There are dangerous bananas!]
-)
-
-  })
-]
-
-== 提示框
-
-#slide[
-  #set text(size: .5em)
-```typc
-#info[ This is the info clue ... ]
-#tip(title: "Best tip ever")[Check out this cool package]
-```
-][
-  #align(center,{
-info[ This is the info clue ... ]
-tip(title: "Best tip ever")[Check out this cool package]
-  })
-]
-
-== 类obsidian
-
-#info[This is information]
-
-#success[I'm making a note here: huge success]
-
-#check[This is checked!]
-
-#warning[First warning...]
-
-#note[My incredibly useful note]
-
-#question[Question?]
-
-#example[An example make things interesting]
-
-#quote[To be or not to be]
-
-#callout(
-  title: "Callout",
-  fill: blue,
-  title-color: white,
-  body-color: black,
-  icon: none)[123]
-
-#let mycallout = callout.with(title: "My callout")//TODO:放到config中去
-
-#mycallout[Hey this is my custom callout!]
-
-= 第三章：页面
-
-// == focus-slide
-
-// #focus-slide[
-//   聚焦页
-// ]
-
-// == matrix-slide
-
-// #matrix-slide[
-//   left
-// ][
-//   middle
-// ][
-//   right
-// ]
-
-// #matrix-slide(columns: 1)[
-//   top
-// ][
-//   bottom
-// ]
-
-// #matrix-slide(columns: (1fr, 2fr, 1fr), ..(lorem(8),) * 9)
-
-== 致谢
-
-#ending-slide[
-  #align(center + horizon)[
-  #set text(size: 3em, weight: "bold", s.colors.primary)
-
-  THANKS FOR ALL
-
-  敬请指正！
-]
-]
+从PPT到beamer，有许多科大的模板可供使用，PPT制作起来较为耗费心神，而beamer由于其LaTeX的特性，可以更加专注于内容的编写，而不用过多的关注样式，但Latex语言的语法和计算机学科接触的开发语言差别较大，而且其第三方包语法各不相同，有很高的入门门槛，同时其编译时间较长，不适合实时更新。且beamer本身已经是很久之前的项目了，语言风格，性能，风格，功能均越来越显得与时代脱节，使用了一阵子的beamer模板后了解到基于Rust语言开发的Typst（做毕业设计学习了一段时间Rust），于是我决定转向Typst书写汇报幻灯片。鉴于当前Typst生态相较于Latex还显得十分不完善，也没有科大师生适用的模板，所以我基于北航模板（其借鉴了东南的项目）的框架，以科大的beamer模板的样式设计为参考，设计了一套科大的Typst模板，并添加了大量组件可供复用，当前还在完善中，希望将来可以成为Typst开源社区的项目之一，在官网上直接就能找到。
